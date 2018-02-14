@@ -18,7 +18,7 @@ export class GameViewPage {
   totalQuizNum: number;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage) {
   }
@@ -50,7 +50,7 @@ export class GameViewPage {
         this.answers = this.currentQuiz.incorrect_answers;
         this.correct = this.currentQuiz.correct_answer;
         this.answers.push(this.correct);
-        this.shuffle(this.answers);   
+        this.shuffle(this.answers);
       } else if ( this.totalQuizNum < this.quizIndex +1) {
         this.navCtrl.setRoot(ResultsPage);
       };
@@ -66,27 +66,27 @@ export class GameViewPage {
           }
       results.push(quizResults);
       this.storage.set('results', results)
-    });    
+    });
   }
 
   handleAnswer(answer){
-    if (answer === this.correct) {  
+    if (answer === this.correct) {
       this.trackAnswers(answer);
       this.navCtrl.setRoot(
-        FeedbackPage, 
+        FeedbackPage,
         {
-        checkAnswer:true, 
+        checkAnswer:true,
         totalQuizNum: this.totalQuizNum
       });
     } else {
       this.trackAnswers(answer);
       this.navCtrl.setRoot(
-        FeedbackPage, 
+        FeedbackPage,
         {
-          checkAnswer:false, 
+          checkAnswer:false,
           correctAnswer: this.correct,
           totalQuizNum: this.totalQuizNum
         });
-    } 
+    }
   }
 }

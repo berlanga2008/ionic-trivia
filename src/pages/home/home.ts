@@ -16,7 +16,7 @@ export class HomePage {
   };
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     private quizProvider: QuizProvider,
     private storage: Storage) {
   };
@@ -32,14 +32,14 @@ export class HomePage {
           quizNum: 10
         };
       };
-    
+
       this.quizProvider.getQuiz(this.option.category, this.option.difficulty, this.option.quizNum).
       subscribe(quiz => {
         this.storage.set('quizzes', JSON.stringify(quiz));
+        //console.log(decodeHtml(JSON.stringify(quiz)));
       });
     });
   };
-
 
   start(){
     this.navCtrl.setRoot(GameViewPage);
